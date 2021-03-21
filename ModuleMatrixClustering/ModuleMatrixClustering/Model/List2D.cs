@@ -11,6 +11,7 @@ namespace ModuleMatrixClustering.Model
     {
         Random random = new Random();
         public DistanceMatrix OddDistances { get; set; }
+        public DistanceMatrix EuclideanDistances { get; set; }
 
         public BaseObject2D Center()
         {
@@ -22,6 +23,22 @@ namespace ModuleMatrixClustering.Model
             retval.Scale(1d / this.Count);
 
             return retval;
+        }
+
+        public Range2D GetRange()
+        {
+            BaseObject2D max = new BaseObject2D() { X = Double.MinValue, Y = Double.MinValue };
+            BaseObject2D min = new BaseObject2D() { X = Double.MaxValue, Y = Double.MaxValue };
+
+            foreach (var obj in this)
+            {
+                if (obj.X < min.X) min.X = obj.X;
+                if (obj.Y < min.Y) min.Y = obj.Y;
+                if (obj.X > max.X) max.X = obj.X;
+                if (obj.Y > max.Y) max.Y = obj.Y;
+            }
+
+            return new Range2D() { Min = min, Max = max };
         }
 
         public double OneDimensionErrorSum()
@@ -55,6 +72,18 @@ namespace ModuleMatrixClustering.Model
             double errorSum = 0;
             foreach (var item in this) errorSum += Math.Abs(item.EuclideanDistanceTo(c));
             return errorSum;
+        }
+
+        public void UpdateEuclideanDistances()
+        {
+            EuclideanDistances = new DistanceMatrix(this.Count);
+            for (int i = 0; i < this.Count; i++)
+            {
+                for (int j = i; j < this.Count; j++)
+                {
+                    EuclideanDistances.Set(i, j, this[i].EuclideanDistanceTo(this[j]));
+                }
+            }
         }
 
         public double CircularArea()
@@ -104,26 +133,6 @@ namespace ModuleMatrixClustering.Model
             List2D<T> retval = new List2D<T>();
             foreach (var idx in idxs) retval.Add(this[idx]);
             return retval;
-        }
-
-        public Range2D GetRange()
-        {
-            BaseObject2D max = new BaseObject2D() { X = Double.MinValue, Y = Double.MinValue };
-            BaseObject2D min = new BaseObject2D() { X = Double.MaxValue, Y = Double.MaxValue };
-
-            foreach (var obj in this)
-            {
-                if (obj.X < min.X) min.X = obj.X;
-                if (obj.Y < min.Y) min.Y = obj.Y;
-                if (obj.X > max.X) max.X = obj.X;
-                if (obj.Y > max.Y) max.Y = obj.Y;
-            }
-
-            return new Range2D()
-            {
-                Min = min,
-                Max = max
-            };
         }
 
         public void ReadFromTabbedText(string filename)

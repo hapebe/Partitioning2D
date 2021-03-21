@@ -1,4 +1,5 @@
 ﻿using ModuleMatrixClustering.Model;
+using ModuleMatrixClustering.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,14 +12,21 @@ namespace ModuleMatrixClustering.Experiments
 {
     public class PathLengthsInHpTest3 : ConsolePayload
     {
-        private const string FILE_BASENAME = "HP-Test3";
+        public string FileBaseName { get; set; }
+
+        public PathLengthsInHpTest3(string fileBaseName)
+        {
+            FileBaseName = fileBaseName;
+        }
 
         public void Run()
         {
             List2D<Item2D> cluster = new List2D<Item2D>();
-            cluster.ReadFromTabbedText(Path.Combine(DATA_DIR, $"{FILE_BASENAME}-coords.txt"));
+            cluster.ReadFromTabbedText(Path.Combine(DATA_DIR, $"{FileBaseName}-coords.txt"));
 
             w($"center: {cluster.Center()}");
+            List2DManipulator.NormalizeCenter(cluster);
+            w($"center after normalization: {cluster.Center()}");
 
             w($"ODD error sum: {cluster.OneDimensionErrorSum()}");
             w($"Rectangular area: {cluster.RectangularArea()} U²");
@@ -37,8 +45,11 @@ namespace ModuleMatrixClustering.Experiments
             // List2D<Item2D> shuffled = cluster.GetShuffled();
             // shuffled.WriteToTabbedText(Path.Combine(DATA_DIR, @"11-square-shuffled.txt"));
 
-            cluster.UpdateOddDistances();
-            File.WriteAllText(Path.Combine(DATA_DIR, $"{FILE_BASENAME}-oddDistances.txt"), cluster.OddDistances.ToTabbedText());
+            //cluster.UpdateOddDistances();
+            //File.WriteAllText(Path.Combine(DATA_DIR, $"{FileBaseName}-oddDistances.txt"), cluster.OddDistances.ToTabbedText());
+
+            //cluster.UpdateEuclideanDistances();
+            //File.WriteAllText(Path.Combine(DATA_DIR, $"{FileBaseName}-eucDistances.txt"), cluster.EuclideanDistances.ToTabbedText());
 
             //List<string> pathLengths = new List<string>() { "path_length" };
             //for (int i = 0; i < 1000000; i++)
