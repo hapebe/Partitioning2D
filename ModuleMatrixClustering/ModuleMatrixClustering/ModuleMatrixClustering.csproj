@@ -43,9 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsolePayload.cs" />
+    <Compile Include="Experiments\PathLengthsInHpTest3.cs" />
+    <Compile Include="Experiments\PathLengthsIn11Square.cs" />
     <Compile Include="Model\BaseObject2D.cs" />
+    <Compile Include="Model\DistanceMatrix.cs" />
     <Compile Include="Model\Item2D.cs" />
     <Compile Include="Model\List2D.cs" />
+    <Compile Include="Model\PathOnList2D.cs" />
+    <Compile Include="Model\Range2D.cs" />
     <Compile Include="Model\Set2D.cs" />
     <Compile Include="Persistence\ITabbedTextable.cs" />
     <Compile Include="Program.cs" />
@@ -55,8 +61,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

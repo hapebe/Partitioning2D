@@ -22,6 +22,10 @@ namespace ModuleMatrixClustering.Model
 
         public override string ToString()
         {
+            if (string.IsNullOrEmpty(Label))
+            {
+                return $"({X};{Y})";
+            }
             return $"{Id} {Label}";
         }
 
@@ -47,7 +51,7 @@ namespace ModuleMatrixClustering.Model
 
         public override string TabbedTextHeaders()
         {
-            return "Id\tLabel\tX\tY";
+            return "Id\tLabel\tx\ty";
         }
     }
 }

@@ -3,10 +3,17 @@ library(e1071)
 # install.packages("ggplot2")
 library(ggplot2)
 
-# df <- read.csv(file="D:/home/hapebe/self-made/coding/clustering/HP-Test6-p4548,0-coords.txt", header=TRUE, sep="\t", na="")
-df <- read.csv(file="D:/home/hapebe/self-made/coding/clustering/HP-Test3-p4742,0-coords.txt", header=TRUE, sep="\t", na="")
-# df <- read.csv(file="D:/home/hapebe/self-made/coding/clustering/landscape_auslegeoptionen3-p4701,0-coords.txt", header=TRUE, sep="\t", na="")
-# str(df)
+datafilepath <- "D:/home/hapebe/self-made/coding/Partitioning2D/Data/"
+
+# source <- "landscape_auslegeoptionen3-p4701,0-coords.txt"
+# source <- "HP-Test6-p4548,0-coords.txt"
+source <- "HP-Test3-p4742,0-coords.txt"
+# source <- "11-square.txt"
+
+df <- read.csv(file=paste0(datafilepath, source), header=TRUE, sep="\t", na="")
+str(df)
+
+plot(df$x, df$y)
 
 idsdf <- df[c("no", "ID")]
 subdf <- df[c("x", "y")]

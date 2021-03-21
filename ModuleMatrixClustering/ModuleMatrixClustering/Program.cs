@@ -1,32 +1,31 @@
-﻿using ModuleMatrixClustering.Model;
+﻿using ModuleMatrixClustering.Experiments;
+using ModuleMatrixClustering.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ModuleMatrixClustering
 {
-    class Program
+    class Program : ConsolePayload
     {
         static void Main(string[] args)
         {
-            Set2D set = new Set2D();
-            set.Add(new Item2D(0, 0));
-            set.Add(new Item2D(0, 1));
-            set.Add(new Item2D(1, 0));
-            set.Add(new Item2D(1, 1));
+            List2D<Item2D> cluster = new List2D<Item2D>();
+            cluster.ReadFromTabbedText(Path.Combine(DATA_DIR, @"11-square.txt"));
 
-            w($"center: {set.Center()}");
-            w($"error sum: {set.OneDimensionErrorSum()}");
+            cluster.UpdateOddDistances();
+            File.WriteAllText(Path.Combine(DATA_DIR, @"11-square-oddDistances.txt"), cluster.OddDistances.ToTabbedText());
+
+            // var payload = new PathLengthsIn11Square(); payload.Run();
+            var payload = new PathLengthsInHpTest3(); payload.Run();
 
             Console.ReadKey();
         }
 
-        public static void w(string s)
-        {
-            Console.WriteLine(s);
-        }
     }
 
 }
