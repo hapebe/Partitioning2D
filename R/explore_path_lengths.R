@@ -14,7 +14,11 @@ datafilepath <- "D:/home/hapebe/self-made/coding/Partitioning2D/Data/"
 # subject <- "12-square"
 # subject <- "13-square"
 # subject <- "14-square"
-subject <- "15-square"
+# subject <- "15-square"
+# subject <- "16-square"
+# subject <- "17-square"
+# subject <- "18-square"
+subject <- "30-square"
 
 source <- paste0(subject, "-pathLengths.xl.txt")
 

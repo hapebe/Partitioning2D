@@ -18,8 +18,8 @@ namespace ModuleMatrixClustering
             // List2D<Item2D> cluster = new List2D<Item2D>();
             // cluster.ReadFromTabbedText(Path.Combine(DATA_DIR, @"11-square.txt"));
 
-            string baseName = "15-square";
-            var cluster = SquareSetFactory.GetSquareSet(15);
+            string baseName = "30-square";
+            var cluster = SquareSetFactory.GetSquareSet(30);
 
             // var payload = new PathLengthsInHpTest3("HP-Test3"); payload.Run();
             var payload = new ExploreList2D(cluster, baseName);

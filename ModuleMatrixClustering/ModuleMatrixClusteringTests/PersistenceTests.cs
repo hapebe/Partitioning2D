@@ -41,8 +41,8 @@ namespace ModuleMatrixClusteringTests
 
             // Console.WriteLine(File.ReadAllText(tempFilename));
 
-            var copy = new List2D();
-            copy.ReadFromTabbedText<Item2D>(tempFilename);
+            var copy = new List2D<Item2D>();
+            copy.ReadFromTabbedText(tempFilename);
 
             Assert.AreEqual(original.Count, copy.Count);
             Assert.AreEqual(((Item2D)original[3]).Id, ((Item2D)copy[3]).Id);

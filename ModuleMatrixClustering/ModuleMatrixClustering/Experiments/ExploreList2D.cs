@@ -47,10 +47,10 @@ namespace ModuleMatrixClustering.Experiments
             // shuffled.WriteToTabbedText(Path.Combine(DATA_DIR, $"{BaseName}-shuffled.txt"));
 
             List.UpdateOddDistances();
-            File.WriteAllText(Path.Combine(DATA_DIR, $"{BaseName}-oddDistances.txt"), List.OddDistances.ToTabbedText());
+            File.WriteAllText(Path.Combine(DATA_DIR, $"{BaseName}-oddDistances.xl.txt"), List.OddDistances.ToTabbedText());
 
             List.UpdateEuclideanDistances();
-            File.WriteAllText(Path.Combine(DATA_DIR, $"{BaseName}-eucDistances.txt"), List.EuclideanDistances.ToTabbedText());
+            File.WriteAllText(Path.Combine(DATA_DIR, $"{BaseName}-eucDistances.xl.txt"), List.EuclideanDistances.ToTabbedText());
 
             List<string> pathLengths = new List<string>() { "path_length" };
             for (int i = 0; i < 1000000; i++)
