@@ -24,7 +24,9 @@ namespace ModuleMatrixClustering
 
             // var payload = new PathLengthsInHpTest3("HP-Test3"); payload.Run();
             // var payload = new ExploreList2D(cluster, baseName);
-            var payload = new SaveList2DToSvg(cluster, baseName);
+            // var payload = new SaveList2DToSvg(cluster, baseName);
+            var payload = new GenerateRandomItems(1000000);
+
             payload.Run();
 
 

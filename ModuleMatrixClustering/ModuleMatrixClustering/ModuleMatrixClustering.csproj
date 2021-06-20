@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="ConsolePayload.cs" />
     <Compile Include="Experiments\ExploreList2D.cs" />
+    <Compile Include="Experiments\GenerateRandomItems.cs" />
     <Compile Include="Experiments\PathLengthsInHpTest3.cs" />
     <Compile Include="Experiments\PathLengthsIn11Square.cs" />
     <Compile Include="Experiments\SaveList2DToSvg.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Utils\List2DManipulator.cs" />
     <Compile Include="Utils\RandomExtensions.cs" />
     <Compile Include="Utils\SquareSetFactory.cs" />
+    <Compile Include="Utils\Csv\List2DExporter.cs" />
     <Compile Include="Utils\Svg\List2DExporter.cs" />
   </ItemGroup>
   <ItemGroup>
